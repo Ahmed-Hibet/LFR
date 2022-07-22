@@ -1,0 +1,23 @@
+{% extends 'license/base.html' %}
+{% block content %}
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Facility</th>
+                <th scope="col">ID</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for facility in pending_facility_list %}
+            <tr>
+                <td>{{ facility.name }}</td>
+                <td>{{ facility.id }}</td>
+                <td><button type="button" class="btn btn-warning">Pending</button></td>
+                <td><a href="{% url 'license-request' facility.id %}" class="btn btn-success">Request License</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
